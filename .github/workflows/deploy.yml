@@ -13,7 +13,7 @@ permissions:
 jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, agent-prod]
     environment:
       name: production
       url: https://${{ vars.EC2_HOST }}/healthz
