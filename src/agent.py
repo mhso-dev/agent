@@ -13,6 +13,7 @@ def build_agent():
     try:
         model.bind_tools(TOOLS)
     except NotImplementedError:
+        # LangChain's fake chat model used in tests does not implement tool binding.
         return create_agent(model=model, tools=[])
 
     return create_agent(model=model, tools=TOOLS)
